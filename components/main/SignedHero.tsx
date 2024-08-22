@@ -5,7 +5,7 @@ import { User } from "@clerk/nextjs/server";
 import { createCheckout } from "@/actions/paymentActions";
 import { useRouter } from "next/navigation";
 interface SignedHeroProps {
-  user: User;
+  user: any;
 }
 const SignedHero = ({ user }: SignedHeroProps) => {
   const [checkUrl, setCheckUrl] = useState("");
