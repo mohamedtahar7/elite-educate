@@ -30,7 +30,7 @@ const page = () => {
   }, [course]);
   if (!user) {
     return (
-      <div className="py-32 h-[90vh] text-center md:mt-0 mt-40 w-full flex flex-col gap-5 items-center">
+      <div className="py-32 h-[90vh] text-center md:mt-0 w-full flex flex-col gap-5 items-center">
         {/* <h1 className="md:text-6xl text-2xl font-medium">
         We're Reshaping <br /> the Education, <br /> For Good.
       </h1> */}

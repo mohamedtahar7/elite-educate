@@ -112,6 +112,7 @@ const Navbar = () => {
             return (
               <Link
                 href={link.href}
+                onClick={() => setActiveNav(false)}
                 className="text-[1rem] p-3 hover:bg-[#000]/40 rounded-lg transition"
                 key={id}
               >
