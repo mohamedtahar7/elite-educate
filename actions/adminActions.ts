@@ -38,7 +38,7 @@ export async function getCourseById(id: any) {
 export async function addComment(id: any, comment: any) {
   const course = await getCourseById(id);
   const commentsArray = course?.comments;
-  const comments = [comment, ...commentsArray];
+  const comments = [comment, ...course!.comments];
   try {
     const newCourse = await db.course.update({
       where: {
