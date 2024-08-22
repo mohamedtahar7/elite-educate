@@ -32,9 +32,9 @@ const Login = () => {
       <CardFooter className="flex items-center justify-center">
         <h4 className="flex sm:flex-row flex-col items-center gap-1 text-sm text-center text-[#555]">
           Don't have an account?
-          <Link className="font-semibold text-[#222]" href={"/sign-up"}>
+          <a className="font-semibold text-[#222]" href={"/sign-up"}>
             Register now
-          </Link>
+          </a>
         </h4>
       </CardFooter>
     </Card>

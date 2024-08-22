@@ -8,10 +8,7 @@ interface CourseProps {
 }
 const CourseCard = ({ course }: CourseProps) => {
   return (
-    <Link
-      className="hover:opacity-80 transition"
-      href={`/courses/${course.id}`}
-    >
+    <a className="hover:opacity-80 transition" href={`/courses/${course.id}`}>
       <Card className="bg-transparent border-none flex flex-col gap-3">
         <Image
           width={1920}
@@ -21,21 +18,21 @@ const CourseCard = ({ course }: CourseProps) => {
           src={course.thumbnail}
         />
         <div className="flex flex-col gap-0]">
-          <Link
+          <a
             href={`/courses/${course.id}`}
             className="text-primaryc text-[1rem] transition hover:opacity-80"
           >
             {course.title}
-          </Link>
-          <Link
+          </a>
+          <a
             href={"/"}
             className="text-[#777] text-sm font-medium transition hover:opacity-80"
           >
             {course.instructor}
-          </Link>
+          </a>
         </div>
       </Card>
-    </Link>
+    </a>
   );
 };
 

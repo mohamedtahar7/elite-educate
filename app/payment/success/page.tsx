@@ -23,13 +23,13 @@ const page = () => {
               Your monthly subscription to Elite Educate has been paid
               successfully
             </p>
-            <Link
+            <a
               href={"/courses"}
               className="bg-[#222] px-6 py-3 flex items-center gap-2 text-primaryc rounded-lg transition hover:opacity-80"
               type="submit"
             >
               Access All Courses
-            </Link>
+            </a>
           </div>
         </CardHeader>
         <CardContent className="flex flex-col"></CardContent>

@@ -37,11 +37,11 @@ const page = () => {
         <h1 className="md:text-5xl text-2xl font-medium ">
           You're not logged in to Elite Educate
         </h1>
-        <Link href={"/sign-up"}>
+        <a href={"/sign-up"}>
           <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
             Get Started
           </Button>
-        </Link>
+        </a>
       </div>
     );
   }

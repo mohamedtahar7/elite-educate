@@ -31,9 +31,9 @@ const GetStartedCard = () => {
       <CardFooter className="flex items-center justify-center">
         <h4 className="flex sm:flex-row flex-col items-center gap-1 text-sm text-center text-[#555]">
           Already have an account?
-          <Link className="font-semibold text-[#222]" href={"/sign-in"}>
+          <a className="font-semibold text-[#222]" href={"/sign-in"}>
             Log in now
-          </Link>
+          </a>
         </h4>
       </CardFooter>
     </Card>

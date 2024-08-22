@@ -41,17 +41,17 @@ const SignedHero = ({ user }: SignedHeroProps) => {
           journey designed for your success. Let's elevate your knowledge
           together!
         </p>
-        <Link href={"/courses"}>
+        <a href={"/courses"}>
           <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
             Browse All Courses
           </Button>
-        </Link>
-        <Link
+        </a>
+        <a
           href={checkUrl}
           className="py-4 px-5 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl"
         >
           Pay your subscription : 2900.00 DZD
-        </Link>
+        </a>
         {/* <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
           Create Checkout
         </Button> */}

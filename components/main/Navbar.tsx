@@ -18,12 +18,12 @@ const Navbar = () => {
   const router = useRouter();
   return (
     <header className="fixed z-40 w-full flex items-center justify-between py-[3%] md:py-[2%] px-6 md:px-10">
-      <Link
+      <a
         className="transition z-30 text-4xl font-semibold hover:opacity-80"
         href={"/"}
       >
         Elite Educate
-      </Link>
+      </a>
       <nav className="md:block z-30 bg-blur py-1 px-1 rounded-xl hidden text-primaryc">
         <ul className="flex items-center gap-8">
           {navLinks.map((link, id) => {
@@ -54,13 +54,13 @@ const Navbar = () => {
               );
             } else {
               return (
-                <Link
+                <a
                   href={link.href}
                   className="text-sm p-3  hover:bg-[#000]/40 rounded-lg transition"
                   key={id}
                 >
                   {link.text}
-                </Link>
+                </a>
               );
             }
           })}
@@ -110,14 +110,14 @@ const Navbar = () => {
               return null;
             }
             return (
-              <Link
+              <a
                 href={link.href}
                 onClick={() => setActiveNav(false)}
                 className="text-[1rem] p-3 hover:bg-[#000]/40 rounded-lg transition"
                 key={id}
               >
                 {link.text}
-              </Link>
+              </a>
             );
           })}
         </ul>

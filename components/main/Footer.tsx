@@ -13,18 +13,18 @@ const Footer = () => {
         </h1>
       </div>
       <div className="flex items-center gap-4">
-        <Link
+        <a
           href={"/"}
           className="transition hover:opacity-60 text-[0.75rem] opacity-70 uppercase"
         >
           Contact
-        </Link>
-        <Link
+        </a>
+        <a
           href={"/"}
           className="transition hover:opacity-60 text-[0.75rem] opacity-70 uppercase"
         >
           Terms
-        </Link>
+        </a>
       </div>
     </footer>
   );
