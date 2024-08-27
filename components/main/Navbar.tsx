@@ -17,7 +17,7 @@ const Navbar = () => {
   const { isLoaded, isSignedIn, user } = useUser();
   const router = useRouter();
   return (
-    <header className="fixed z-40 w-full flex items-center justify-between py-[3%] md:py-[2%] px-6 md:px-10">
+    <header className="fixed z-50 w-full flex items-center justify-between py-[3%] md:py-[2%] px-6 md:px-10">
       <a
         className="transition z-30 text-4xl font-semibold hover:opacity-80"
         href={"/"}

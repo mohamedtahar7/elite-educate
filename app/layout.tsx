@@ -21,7 +21,7 @@ export default function RootLayout({
         <body className={`text-primaryc h-screen bg-black overflow-x-hidden`}>
           <Navbar />
           <Gradient />
-          <main className="bg-transparent h-[90vh] z-40 md:px-10 px-6">
+          <main className="flex-1 bg-transparent z-40 md:px-10 px-6">
             {children}
           </main>
           <Footer />
