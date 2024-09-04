@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/main/Navbar";
 import Gradient from "@/components/main/Gradient";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkLoaded, ClerkLoading, ClerkProvider } from "@clerk/nextjs";
 import Footer from "@/components/main/Footer";
+import Loader from "@/components/ui/Loader";
 export const metadata: Metadata = {
   title: "Elite Educate - Your choice for Elite caliber Education",
   description:
@@ -21,9 +22,16 @@ export default function RootLayout({
         <body className={`text-primaryc h-screen bg-black overflow-x-hidden`}>
           <Navbar />
           <Gradient />
-          <main className="flex-1 bg-transparent z-40 md:px-10 px-6">
-            {children}
-          </main>
+          <ClerkLoading>
+            <div className="flex items-center justify-center h-screen text-2xl">
+              <Loader />
+            </div>
+          </ClerkLoading>
+          <ClerkLoaded>
+            <main className="flex-1 bg-transparent z-40 md:px-10 px-6">
+              {children}
+            </main>
+          </ClerkLoaded>
           <Footer />
           {/* <div className="absolute pointer-events-none -z-40 bottom-0 left-0 h-[90%] w-[50%] bg-blur-2" /> */}
         </body>
