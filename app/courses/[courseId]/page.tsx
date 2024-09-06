@@ -12,6 +12,7 @@ import { useAuth, useUser } from "@clerk/nextjs";
 import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import SkeletonCoursePage from "@/components/ui/SkeletonCoursePage";
 const page = () => {
   const { courseId } = useParams();
   const { user } = useUser();
@@ -21,12 +22,18 @@ const page = () => {
     primaryColor: "#00aeff",
   };
   const fetchCourse = async () => {
-    const cors: any = await getCourseById(courseId);
-    setCourse(cors);
+    try {
+      const cors: any = await getCourseById(courseId);
+      await new Promise((resolve) => setTimeout(resolve, 2000));
+      setCourse(cors);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setLoading(false);
+    }
   };
   useEffect(() => {
     fetchCourse();
-    setLoading(false);
   }, [course]);
   if (!user) {
     return (
@@ -66,6 +73,9 @@ const page = () => {
                 </p>
               </div>
             </div>
+            <h1 className="text-center text-2xl font-medium">
+              The Full Course :
+            </h1>
             <div className="flex items-center justify-center md:mx-16 mx-6 mb-8 rounded-2xl">
               <div className="">
                 <Player src={course.video} poster={course.thumbnail} />
@@ -87,7 +97,7 @@ const page = () => {
           </div>
         </div>
       ) : (
-        <Spinner d="10" />
+        <SkeletonCoursePage />
       )}
       {/* {loading ? (
         <Spinner d="10" />
