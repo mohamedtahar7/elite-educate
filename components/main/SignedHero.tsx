@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import Link from "next/link";
 import { User } from "@clerk/nextjs/server";
-import { createCheckout } from "@/actions/paymentActions";
+import { createCheckout, createTestCheckout } from "@/actions/paymentActions";
 import { useRouter } from "next/navigation";
 interface SignedHeroProps {
   user: any;
@@ -15,7 +15,7 @@ const SignedHero = ({ user }: SignedHeroProps) => {
     console.log(checkout);
   };
   const fetchUrl = async () => {
-    const url: any = await createCheckout();
+    const url: any = await createTestCheckout();
     setCheckUrl(url.checkout_url);
   };
   useEffect(() => {
