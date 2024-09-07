@@ -23,8 +23,26 @@ model Course {
   comments    Comment[]
 }
 
+model User {
+  id             String     @id @default(auto()) @map("_id") @db.ObjectId
+  clerkId        String
+  email          String     @unique
+  firstName           String
+  lastName           String
+  img            String
+  subscribed     Boolean  @default(false)
+  role           Role       @default(USER)
+  createdAt      DateTime   @default(now())
+  updatedAt      DateTime   @updatedAt
+}
 type Comment {
   username String
   imgUrl String
   comment  String
+}
+
+enum Role {
+  USER
+  ADMIN
+  INSTRUCTOR
 }

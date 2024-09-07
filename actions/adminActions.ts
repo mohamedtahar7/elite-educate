@@ -1,7 +1,18 @@
 "use server";
 import { db } from "@/lib/db";
-import { Course } from "@prisma/client";
+import { Course, User } from "@prisma/client";
 
+export async function createUser(user: any) {
+  const createdUser = await db.user.create({
+    data: {
+      clerkId: user.clerkId,
+      email: user.email,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      img: user.img,
+    },
+  });
+}
 export async function addCourse(course: Course) {
   const result = await db.course.create({
     data: {
