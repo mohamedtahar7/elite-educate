@@ -25,7 +25,7 @@ model Course {
 
 model User {
   id             String     @id @default(auto()) @map("_id") @db.ObjectId
-  clerkId        String
+  clerkId        String @unique
   email          String     @unique
   firstName           String
   lastName           String

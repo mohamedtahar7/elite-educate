@@ -13,6 +13,32 @@ export async function createUser(user: any) {
     },
   });
 }
+export async function getUserById(id: any) {
+  try {
+    const user = await db.user.findUnique({
+      where: {
+        clerkId: id,
+      },
+    });
+    return user;
+  } catch (error) {
+    console.log(error);
+  }
+}
+export async function subscribeUser(id: any) {
+  try {
+    const user = await db.user.update({
+      where: {
+        clerkId: id,
+      },
+      data: {
+        subscribed: true,
+      },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+}
 export async function addCourse(course: Course) {
   const result = await db.course.create({
     data: {
