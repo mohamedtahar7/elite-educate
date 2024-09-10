@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { auth } from "@clerk/nextjs/server";
 import { verifyChargilySignature } from "@/lib/verifyChargilySignarute"; // Your helper function for signature verification
+import { subscribeUser } from "@/actions/adminActions";
 
 export async function POST(req: any) {
   const chargilyData = await req.json();
@@ -17,12 +18,9 @@ export async function POST(req: any) {
   if (chargilyData.status === "success") {
     try {
       // Update the user's subscription status
-      const user = await db.user.update({
-        where: { clerkId: userId! }, // Assuming the email is in the webhook data
-        data: { subscribed: true },
-      });
+      subscribeUser(userId);
 
-      return NextResponse.json({ message: "Subscription updated", user });
+      return NextResponse.json({ message: "Subscription updated" });
     } catch (error) {
       console.error("Error updating user subscription:", error);
       return NextResponse.json(

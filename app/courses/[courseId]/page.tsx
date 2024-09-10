@@ -63,7 +63,7 @@ const page = () => {
   }
   return (
     <section className="pt-32">
-      {course ? (
+      {course && user ? (
         <div>
           <div className="flex items-center justify-center">
             <div
