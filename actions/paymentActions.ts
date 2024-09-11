@@ -92,8 +92,13 @@ export async function createTestCheckout() {
   };
 
   const data = {
-    items: [{ price: "01j5js66kn8wka2heffsww23c2", quantity: 1 }],
-    success_url: "http://localhost:3000/payment/success",
+    items: [
+      {
+        price: "01j5js66kn8wka2heffsww23c2",
+        quantity: 1,
+      },
+    ],
+    success_url: "https://elite-educate.vercel.app/payment/success",
   };
   try {
     const response = await axios.post(
