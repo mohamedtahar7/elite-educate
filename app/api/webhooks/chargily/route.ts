@@ -1,60 +1,65 @@
-// app/api/chargily-webhook/route.js
-
-import { NextResponse } from "next/server";
-import { db } from "@/lib/db";
+// app/api/webhooks/route.ts
+import { NextResponse, NextRequest } from "next/server";
 import { auth } from "@clerk/nextjs/server";
-import { verifyChargilySignature } from "@/lib/verifyChargilySignarute"; // Your helper function for signature verification
 import { subscribeUser } from "@/actions/adminActions";
 import crypto from "crypto";
 import { testApi } from "@/lib/paymentApi";
-export async function POST(req: any, res: any) {
-  const signature = req.get("signature");
-  const { userId } = auth();
-  const payload = JSON.stringify(req.body);
-  if (!signature) {
-    return res.sendStatus(400);
-  }
-  const computedSignature = crypto
-    .createHmac("sha256", testApi)
-    .update(payload)
-    .digest("hex");
+export async function POST(request: NextRequest) {
+  try {
+    const { userId } = auth();
+    // Extracting the 'signature' header from the request
+    const signature = request.headers.get("signature");
 
-  if (computedSignature !== signature) {
-    return res.sendStatus(403);
-  }
-  const event = req.body;
+    // Getting the raw payload from the request body
+    const payload = await request.text(); // Read the raw text of the body
 
-  switch (event.type) {
-    case "checkout.paid":
-      const checkout = event.data;
-      // Handle the successful payment.
-      subscribeUser(userId);
-      break;
-    case "checkout.failed":
-      const failedCheckout = event.data;
-      // Handle the failed payment.
-      alert("Payment failed");
-      break;
-  }
-  res.sendStatus(200);
-  // // Check if the payment was successful
-  // if (chargilyData.status === "success") {
-  //   try {
-  //     // Update the user's subscription status
-  //     subscribeUser(userId);
+    // If there is no signature, respond with a 400 status
+    if (!signature) {
+      return NextResponse.json(
+        { message: "Signature missing" },
+        { status: 400 }
+      );
+    }
 
-  //     return NextResponse.json({ message: "Subscription updated" });
-  //   } catch (error) {
-  //     console.error("Error updating user subscription:", error);
-  //     return NextResponse.json(
-  //       { message: "Internal server error" },
-  //       { status: 500 }
-  //     );
-  //   }
-  // } else {
-  //   return NextResponse.json(
-  //     { message: "Payment was not successful" },
-  //     { status: 400 }
-  //   );
-  // }
+    // Calculate the signature
+    const computedSignature = crypto
+      .createHmac("sha256", testApi)
+      .update(payload)
+      .digest("hex");
+
+    // If the calculated signature doesn't match the received signature, respond with a 403 status
+    if (computedSignature !== signature) {
+      return NextResponse.json(
+        { message: "Invalid signature" },
+        { status: 403 }
+      );
+    }
+
+    // Parse the JSON payload
+    const event = JSON.parse(payload);
+
+    // Switch based on the event type
+    switch (event.type) {
+      case "checkout.paid":
+        const checkout = event.data;
+        // Handle the successful payment
+        subscribeUser(userId);
+        break;
+      case "checkout.failed":
+        const failedCheckout = event.data;
+        // Handle the failed payment
+        break;
+      default:
+        // Handle other event types
+        break;
+    }
+
+    // Respond with a 200 status to acknowledge the webhook
+    return NextResponse.json({ message: "Webhook received" }, { status: 200 });
+  } catch (error) {
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+  }
 }
