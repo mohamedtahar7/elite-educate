@@ -1,12 +1,13 @@
 // app/api/webhooks/route.ts
 import { NextResponse, NextRequest } from "next/server";
-import { auth } from "@clerk/nextjs/server";
+import { auth, currentUser } from "@clerk/nextjs/server";
 import { subscribeUser } from "@/actions/adminActions";
 import crypto from "crypto";
 import { testApi } from "@/lib/paymentApi";
 export async function POST(request: NextRequest) {
   try {
-    const { userId } = auth();
+    // const { userId } = auth();
+    const user = await currentUser();
     // Extracting the 'signature' header from the request
     const signature = request.headers.get("signature");
 
@@ -43,7 +44,7 @@ export async function POST(request: NextRequest) {
       case "checkout.paid":
         const checkout = event.data;
         // Handle the successful payment
-        subscribeUser(userId);
+        subscribeUser(user?.id);
         break;
       case "checkout.failed":
         const failedCheckout = event.data;
