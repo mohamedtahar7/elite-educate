@@ -43,24 +43,27 @@ const page = () => {
   useEffect(() => {
     fetchCourseAndUser();
     fetchUrl();
+    document.title = `${
+      !course?.title ? "Elite Educate - Course Page" : course?.title
+    }`;
   }, [course]);
-  if (!user) {
-    return (
-      <div className="py-32 h-[90vh] text-center md:mt-0 w-full flex flex-col gap-5 items-center">
-        {/* <h1 className="md:text-6xl text-2xl font-medium">
-        We're Reshaping <br /> the Education, <br /> For Good.
-      </h1> */}
-        <h1 className="md:text-5xl text-2xl font-medium ">
-          You're not logged in to Elite Educate
-        </h1>
-        <a href={"/sign-up"}>
-          <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
-            Get Started
-          </Button>
-        </a>
-      </div>
-    );
-  }
+  // if (!user) {
+  //   return (
+  //     <div className="py-32 h-[90vh] text-center md:mt-0 w-full flex flex-col gap-5 items-center">
+  //       {/* <h1 className="md:text-6xl text-2xl font-medium">
+  //       We're Reshaping <br /> the Education, <br /> For Good.
+  //     </h1> */}
+  //       <h1 className="md:text-5xl text-2xl font-medium ">
+  //         You're not logged in to Elite Educate
+  //       </h1>
+  //       <a href={"/sign-up"}>
+  //         <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
+  //           Get Started
+  //         </Button>
+  //       </a>
+  //     </div>
+  //   );
+  // }
   return (
     <section className="pt-32">
       {course && user ? (

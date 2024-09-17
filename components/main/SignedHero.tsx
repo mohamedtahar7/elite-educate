@@ -24,7 +24,7 @@ const SignedHero = ({ user }: SignedHeroProps) => {
   return (
     <section
       id="hero"
-      className="flex items-center justify-center md:pt-32 pt-16 z-40 h-fit pb-0"
+      className="flex items-center justify-center md:pt-48 pt-16 z-40 h-fit pb-0"
     >
       <div className="text-center md:mt-0 mt-16 w-full flex flex-col gap-5 items-center">
         {/* <h1 className="md:text-6xl text-2xl font-medium">
@@ -45,17 +45,20 @@ const SignedHero = ({ user }: SignedHeroProps) => {
           projects, personalized learning paths, and a vibrant community, you'll
           gain the skills and confidence to build the future of the web.
         </p>
-        <a href={"/courses"}>
-          <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
+        <div className="flex sm:flex-row flex-col items-center justify-center sm:gap-10 gap-5">
+          <a
+            className="py-4 px-5 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl"
+            href={"/courses"}
+          >
             Browse All Courses
-          </Button>
-        </a>
-        <a
-          href={checkUrl}
-          className="py-4 px-5 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl"
-        >
-          Pay your subscription : 2900.00 DZD
-        </a>
+          </a>
+          <a
+            href={checkUrl}
+            className="py-4 px-5 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl"
+          >
+            Pay your subscription : 2900.00 DZD
+          </a>
+        </div>
         {/* <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
           Create Checkout
         </Button> */}

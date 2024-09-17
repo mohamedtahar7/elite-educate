@@ -23,9 +23,11 @@ export default function RootLayout({
           <Navbar />
           <Gradient />
           <ClerkLoading>
-            <div className="flex items-center justify-center h-screen text-2xl">
-              <Loader />
-            </div>
+            <main>
+              <div className="flex items-center justify-center h-screen text-2xl">
+                <Loader />
+              </div>
+            </main>
           </ClerkLoading>
           <ClerkLoaded>
             <main className="flex-1 bg-transparent z-40 md:px-10 px-6">
