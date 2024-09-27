@@ -66,7 +66,7 @@ const page = () => {
   // }
   return (
     <section className="pt-32">
-      {course && user ? (
+      {course ? (
         <div>
           <div className="flex items-center justify-center">
             <div
@@ -85,7 +85,7 @@ const page = () => {
                 </p>
               </div>
             </div>
-            {user.subscribed ? (
+            {user && user?.subscribed ? (
               <div>
                 <h1 className="text-center text-2xl font-medium">
                   The Full Course :
@@ -111,10 +111,13 @@ const page = () => {
               </div>
             ) : (
               <a
-                href={checkUrl}
+                href={!user ? "/sign-up" : checkUrl}
                 className="py-4 text-center mb-10 md:mx-16 mx-6 px-5 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl"
               >
-                Subscribe now to get access to this course
+                {!user && "Sign Up and Subscribe to Access The Course"}
+                {user &&
+                  !user?.subscribed &&
+                  "Subscribe to Elite Educate To Access The Course"}
               </a>
             )}
           </div>
