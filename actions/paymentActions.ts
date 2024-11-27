@@ -46,7 +46,7 @@ export async function createCheckout() {
       Authorization: `Bearer ${liveApi}`,
       "Content-Type": "application/json",
     },
-    body: '{"amount":2900,"currency":"dzd","success_url":"https://localhost:3000/payment/success"}',
+    body: '{"amount":3900,"currency":"dzd","success_url":"https://localhost:3000/payment/success"}',
   };
 
   try {

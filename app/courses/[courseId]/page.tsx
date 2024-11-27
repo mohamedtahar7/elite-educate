@@ -14,6 +14,9 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SkeletonCoursePage from "@/components/ui/SkeletonCoursePage";
 import { createTestCheckout } from "@/actions/paymentActions";
+import LikeButton from "@/components/ui/LikeButton";
+import SaveButton from "@/components/ui/SaveButton";
+import DislikeButton from "@/components/ui/DislikeButton";
 const page = () => {
   const { courseId } = useParams();
   const { userId } = useAuth();
@@ -87,12 +90,17 @@ const page = () => {
             </div>
             {user && user?.subscribed ? (
               <div>
-                <h1 className="text-center text-2xl font-medium">
+                <h1 className="text-center mb-3 text-2xl font-medium">
                   The Full Course :
                 </h1>
-                <div className="flex items-center justify-center md:mx-16 mx-6 mb-8 rounded-2xl">
+                <div className="flex flex-col gap-4 items-center md:mx-16 mx-6 mb-8 rounded-2xl">
                   <div className="">
                     <Player src={course.video} poster={course.thumbnail} />
+                  </div>
+                  <div className="flex items-center justify-end gap-6 py-3 px-4 rounded-full bg-black/40">
+                    <LikeButton state={true} />
+                    <DislikeButton state={true} />
+                    <SaveButton state={true} />
                   </div>
                 </div>
                 <AddComment id={course?.id} />

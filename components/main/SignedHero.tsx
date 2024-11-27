@@ -56,7 +56,7 @@ const SignedHero = ({ user }: SignedHeroProps) => {
             href={checkUrl}
             className="py-4 px-5 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl"
           >
-            Pay your subscription : 2900.00 DZD
+            Pay your subscription : 3900.00 DZD
           </a>
         </div>
         {/* <Button className="py-6 px-7 flex items-center justify-center bg-primaryc text-[1rem] text-[#111] font-normal hover:opacity-90 transition uppercase rounded-xl">
