@@ -8,8 +8,8 @@ import Spinner from "@/components/ui/Spinner";
 import AddComment from "@/components/main/AddComment";
 import CommentCard from "@/components/main/CommentCard";
 import ReactPlayer from "react-player";
-import { useAuth, useUser } from "@clerk/nextjs";
-import { auth } from "@clerk/nextjs/server";
+// import { useAuth, useUser } from "@clerk/nextjs";
+// import { auth } from "@clerk/nextjs/server";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import SkeletonCoursePage from "@/components/ui/SkeletonCoursePage";
@@ -19,7 +19,7 @@ import SaveButton from "@/components/ui/SaveButton";
 import DislikeButton from "@/components/ui/DislikeButton";
 const page = () => {
   const { courseId } = useParams();
-  const { userId } = useAuth();
+  // const { userId } = useAuth();
   const [course, setCourse] = useState<Course | null>(null);
   const [user, setUser] = useState<User | null>(null);
   const [checkUrl, setCheckUrl] = useState("");
@@ -28,28 +28,28 @@ const page = () => {
     const url: any = await createTestCheckout();
     setCheckUrl(url.checkout_url);
   };
-  const fetchCourseAndUser = async () => {
-    try {
-      const cors: any = await getCourseById(courseId);
-      await new Promise((resolve) => setTimeout(resolve, 2000));
-      setCourse(cors);
-      if (userId) {
-        const usr: any = await getUserById(userId);
-        setUser(usr);
-      }
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    fetchCourseAndUser();
-    fetchUrl();
-    document.title = `${
-      !course?.title ? "Elite Educate - Course Page" : course?.title
-    }`;
-  }, [course]);
+  // const fetchCourseAndUser = async () => {
+  //   try {
+  //     const cors: any = await getCourseById(courseId);
+  //     await new Promise((resolve) => setTimeout(resolve, 2000));
+  //     setCourse(cors);
+  //     if (userId) {
+  //       const usr: any = await getUserById(userId);
+  //       setUser(usr);
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+  // useEffect(() => {
+  //   fetchCourseAndUser();
+  //   fetchUrl();
+  //   document.title = `${
+  //     !course?.title ? "Elite Educate - Course Page" : course?.title
+  //   }`;
+  // }, [course]);
   // if (!user) {
   //   return (
   //     <div className="py-32 h-[90vh] text-center md:mt-0 w-full flex flex-col gap-5 items-center">

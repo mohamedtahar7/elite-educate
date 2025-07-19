@@ -3,14 +3,12 @@ import React from "react";
 import { Input } from "../ui/input";
 import { useState } from "react";
 import { Button } from "../ui/button";
-import { useUser } from "@clerk/nextjs";
 import { Toaster, toast } from "sonner";
 import { addComment } from "@/actions/adminActions";
 interface AddComentProps {
   id: any;
 }
 const AddComment = ({ id }: AddComentProps) => {
-  const { user } = useUser();
   const [comment, setComment] = useState("");
   const handleSubmit = async (
     id: any,
@@ -27,14 +25,7 @@ const AddComment = ({ id }: AddComentProps) => {
     }
   };
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmit(id, user?.fullName, user?.imageUrl, comment);
-        setComment("");
-      }}
-      className="flex items-center gap-3 md:mx-16 mx-6 mb-10"
-    >
+    <form className="flex items-center gap-3 md:mx-16 mx-6 mb-10">
       <Toaster richColors />
       <Input
         value={comment}

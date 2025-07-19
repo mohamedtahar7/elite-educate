@@ -1,12 +1,10 @@
 "use client";
-import { useUser } from "@clerk/nextjs";
 import { Comment } from "@prisma/client";
 import React from "react";
 interface CommentCardProps {
   comment: Comment;
 }
 const CommentCard = ({ comment }: CommentCardProps) => {
-  const { user } = useUser();
   return (
     <div className="flex items-start gap-2">
       <img
