@@ -63,12 +63,12 @@ const CourseUpload = () => {
       instructor: i,
       thumbnail: thumbLink,
       video: videoLink,
-      comments:[]
+      comments: [],
     };
     try {
       const course = await addCourse(c);
       setLoading(false);
-      toast.success(`The Course of ${c.title} has been added successfully!`);
+      toast.success(`${c.title} has been added successfully!`);
       setLoading(false);
     } catch (error) {
       toast.error("Something went wrong!");

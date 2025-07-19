@@ -25,13 +25,11 @@ model Course {
 
 model User {
   id             String     @id @default(auto()) @map("_id") @db.ObjectId
-  clerkId        String @unique
   email          String     @unique
-  firstName           String
-  lastName           String
+  userName String
   img            String
   subscribed     Boolean  @default(false)
-  role           Role       @default(USER)
+  // role           Role       @default(USER)
   createdAt      DateTime   @default(now())
   updatedAt      DateTime   @updatedAt
 }
@@ -41,8 +39,8 @@ type Comment {
   comment  String
 }
 
-enum Role {
-  USER
-  ADMIN
-  INSTRUCTOR
-}
+// enum Role {
+//   USER
+//   ADMIN
+//   INSTRUCTOR
+// }

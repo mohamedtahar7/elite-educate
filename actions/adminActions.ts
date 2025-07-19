@@ -5,11 +5,9 @@ import { Course, User } from "@prisma/client";
 export async function createUser(user: any) {
   const createdUser = await db.user.create({
     data: {
-      clerkId: user.clerkId,
       email: user.email,
-      firstName: user.firstName,
-      lastName: user.lastName,
-      img: user.img,
+      userName: user.userName,
+      img: "https://i.pinimg.com/736x/a2/32/4e/a2324e4fcb6e9f42df855bd929aa43b4.jpg",
     },
   });
 }
@@ -17,7 +15,7 @@ export async function getUserById(id: any) {
   try {
     const user = await db.user.findUnique({
       where: {
-        clerkId: id,
+        id: id,
       },
     });
     return user;
@@ -29,7 +27,7 @@ export async function subscribeUser(id: any) {
   try {
     const user = await db.user.update({
       where: {
-        clerkId: id,
+        id: id,
       },
       data: {
         subscribed: true,
